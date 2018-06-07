@@ -15,3 +15,9 @@ router.get('/', (req, res) => {
             console.log(err)
         })
 })
+router.get('/new', (req, res) => {
+    // const userId = req.params.userId
+    res.render('organizer/new'
+        // userId
+    )
+})
