@@ -26,7 +26,7 @@ const userSchema = new Schema({
     },
     password: String,
     photoUrl: String,
-    closet: [organizerSchema]
+    organizers: [organizerSchema]
 })
 
 module.exports = {

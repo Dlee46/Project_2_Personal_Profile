@@ -21,8 +21,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// const userController = require('./controllers/userController')
-// app.use('/user', userController)
+const userController = require('./controllers/userController')
+app.use('/user', userController)
 
 // const organizerController = require('./controllers/organizerController')
 // app.use('/user/:userId/organizer', organizerController)

@@ -32,7 +32,7 @@ User.remove()
             photoUrl: "https://static1.squarespace.com/static/509155d3e4b0979eac7754e1/t/59248f2207eaa0ad034044a9/1495568191971/Spirited+Away+The+Next+Reel+Film+Podcast?format=1500w"
         })
         testOrganizer.articles.push(testArticle)
-        testUser.closet.push(testOrganizer)
+        testUser.organizers.push(testOrganizer)
 
         return testUser.save()
     })
