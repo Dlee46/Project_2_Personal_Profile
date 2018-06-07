@@ -21,14 +21,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const userController = require('./controllers/userController')
-app.use('/user', userController)
+// const userController = require('./controllers/userController')
+// app.use('/user', userController)
 
 // const organizerController = require('./controllers/organizerController')
 // app.use('/user/:userId/organizer', organizerController)
 
 // const articleController = require('./controllers/articleController')
 // app.use('/user/:userId/organizer/:organizerId/article', articleController)
+
+app.get('/', (req, res) => {
+  res.redirect('/user')
+})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
