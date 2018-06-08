@@ -1,14 +1,15 @@
-const mongoose = require('mongoose')
-const router = express.router({ mergeParams: true })
+const express = require('express')
+const router = express.Router({ mergeParams: true })
 const User = require('../models/User')
 
 // index
 router.get('/', (req, res) => {
-    const userId = request.params.userId
-    User.findById(userId)
+    console.log("ready")
+    const userId = req.params.userId
+    User.findOne({ userId })
         .then((user) => {
-            res.render('/organizer/index', {
-                organizers: user.organizers
+            res.render('organizer/index', {
+                userId,
             })
         })
         .catch((err) => {
@@ -18,7 +19,7 @@ router.get('/', (req, res) => {
 // new
 router.get('/new', (req, res) => {
     const userId = req.params.userId
-    res.render('/organizer/new', {
+    res.render('organizer/new', {
         userId
     })
 })
@@ -26,7 +27,7 @@ router.get('/new', (req, res) => {
 router.post('/', (req, res) => {
     const userId = req.params.userId
     const newOrganizer = req.body
-    User.findById(userId)
+    User.findOne({ userId })
         .then((user) => {
             user.organizer.push(newOrganizer)
             return user.save()
@@ -42,10 +43,10 @@ router.post('/', (req, res) => {
 router.get('/:organizerId', (req, res) => {
     const userId = req.params.userId
     const organizerId = req.params.organizerId
-    User.findById(userId)
+    User.findOne({ userId })
         .then((user) => {
             const organizer = user.organizers.id(organizerId)
-            res.render('/organizer/show')
+            res.render('organizer/show')
         })
         .catch((err) => {
             console.log(err)
@@ -55,7 +56,7 @@ router.get('/:organizerId', (req, res) => {
 router.get('/:organizerId/delete', (req, reors) => {
     const userId = req.params.userId
     const organizerId = req.params.organizerId
-    User.findByIdAndRemove(organizerId)
+    User.findOneAndRemove(organizerId)
         .then(() => {
             res.redirect(`/user/${userid}/organizer`)
         })

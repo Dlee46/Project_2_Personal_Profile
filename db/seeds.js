@@ -14,16 +14,6 @@ mongoose.connect(process.env.MONGODB_URI)
 
 User.remove()
     .then(() => {
-        const testUser = new User({
-            name: "Danny",
-            password: "test"
-        })
-
-        const testOrganizer = new Organizer({
-            title: "Movies",
-            dateCreated: 6 / 7 / 18,
-            description: "movies I love",
-        })
 
         const testArticle = new Article({
             title: "Spirited Away",
@@ -31,10 +21,22 @@ User.remove()
             url: "https://en.wikipedia.org/wiki/Spirited_Away",
             photoUrl: "https://static1.squarespace.com/static/509155d3e4b0979eac7754e1/t/59248f2207eaa0ad034044a9/1495568191971/Spirited+Away+The+Next+Reel+Film+Podcast?format=1500w"
         })
-        testOrganizer.articles.push(testArticle)
-        testUser.organizers.push(testOrganizer)
 
-        return testUser.save()
+        const testOrganizer = new Organizer({
+            title: "Movies",
+            dateCreated: 6 / 7 / 18,
+            description: "movies I love",
+            articles: [testArticle]
+        })
+        const testUser = new User({
+            name: "Danny",
+            userId: "Blah",
+            organizers: [testOrganizer]
+        })
+
+        const users = [testUser]
+
+        return User.insertMany(users)
     })
     .then(() => {
         console.log('mongoDB created')

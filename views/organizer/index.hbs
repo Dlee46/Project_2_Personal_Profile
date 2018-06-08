@@ -1,0 +1,17 @@
+<h1>Categories</h1>
+<ul>
+
+    {{#each user.organizers}}
+    <li>
+        <a href="/user/{{user.userid}}/organizer/{{@index}}">something</a>
+    </li>
+    <form action="/">
+        <button type="submit">Edit Category</button>
+        {{!-- /{{user.username}}/new --}}
+    </form>
+    <form action="/:organizerId/delete" method="POST">
+        <button type="submit">Delete</button>
+        {{!-- /{{../user.username}}/{{this._id}}/delete --}}
+    </form>
+    {{/each}}
+</ul>
