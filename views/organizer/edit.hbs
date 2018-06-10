@@ -1,0 +1,13 @@
+<h1>Edit Category</h1>
+<ul>
+    <form action="/user/{{userId}}/organizer?_method=PUT" method="POST">
+        <label class="editinfo" for="title">Title</label>
+        <input name="title" value="{{userId.organizer.title}}">
+        <br>
+        <label class="editinfo" for="description">Description</label>
+        <input name="description" value="{{userId.organizer.description}}">
+        <br>
+
+        <button type="submit">Create</button>
+    </form>
+</ul>

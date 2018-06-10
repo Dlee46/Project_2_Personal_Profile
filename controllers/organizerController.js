@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
         .then((user) => {
             res.render('organizer/index', {
                 userId,
+                user
             })
         })
         .catch((err) => {
@@ -26,14 +27,33 @@ router.get('/new', (req, res) => {
 // create 
 router.post('/', (req, res) => {
     const userId = req.params.userId
+    console.log(userId)
     const newOrganizer = req.body
     User.findOne({ userId })
         .then((user) => {
-            user.organizer.push(newOrganizer)
+            console.log('in then')
+            user.organizers.push(newOrganizer)
             return user.save()
         })
         .then(() => {
             res.redirect(`/user/${userId}/organizer`)
+            userId
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+// edit
+router.get('/:organizerId/edit', (req, res) => {
+    const userId = req.params.userId
+    const organizerId = req.params.organizerId
+    User.findOne({ userId })
+        .then((user) => {
+            res.render('/organizer/edit', {
+                user,
+                userId,
+                organizerId
+            })
         })
         .catch((err) => {
             console.log(err)
@@ -53,12 +73,18 @@ router.get('/:organizerId', (req, res) => {
         })
 })
 // delete
-router.get('/:organizerId/delete', (req, reors) => {
+router.delete('/:organizerId/delete', (req, res) => {
+    console.log("inside delete")
     const userId = req.params.userId
     const organizerId = req.params.organizerId
+    console.log("Hi")
     User.findOneAndRemove(organizerId)
         .then(() => {
-            res.redirect(`/user/${userid}/organizer`)
+            res.redirect(`/user/${userId}/organizer`, {
+                user,
+                userId,
+                organizerId
+            })
         })
         .catch((err) => {
             console.log(err)

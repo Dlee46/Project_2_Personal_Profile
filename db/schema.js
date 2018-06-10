@@ -26,7 +26,8 @@ const userSchema = new Schema({
     },
     userId: {
         type: String,
-        require: true
+        require: true,
+        unique: true
     },
     photoUrl: String,
     organizers: [organizerSchema]

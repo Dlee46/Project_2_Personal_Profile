@@ -3,15 +3,14 @@
 
     {{#each user.organizers}}
     <li>
-        <a href="/user/{{user.userid}}/organizer/{{@index}}">something</a>
+        <a href="/user/{{../userId}}/organizer/{{_id}}">{{title}}</a>
     </li>
-    <form action="/">
+    <form action="/user/{{../userId}}/organizer/{{_id}}/edit">
         <button type="submit">Edit Category</button>
-        {{!-- /{{user.username}}/new --}}
     </form>
-    <form action="/:organizerId/delete" method="POST">
+    <form action="/user/{{../userId}}/organizer/{{_id}}/?_method=DELETE" method="POST">
         <button type="submit">Delete</button>
-        {{!-- /{{../user.username}}/{{this._id}}/delete --}}
     </form>
     {{/each}}
+    <a href="/user/{{userId}}/organizer/new">Create a Category</a>
 </ul>
