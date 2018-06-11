@@ -49,7 +49,7 @@ router.post('/', (req, res) => {
         })
 })
 // edit
-router.get('/:article/edit', (req, res) => {
+router.get('/:articleId/edit', (req, res) => {
     const userId = req.params.userId
     const organizerId = req.params.organizerId
     const articleId = req.params.articleId
@@ -74,18 +74,24 @@ router.get('/:article/edit', (req, res) => {
 router.put('/:articleId', (req, res) => {
     const userId = req.params.userId
     const organizerId = req.params.organizerId
-    const articleId = req.params.organizedId
+    const articleId = req.params.articleId
     User.findOne({ userId })
         .then((user) => {
+            console.log('UPDATE IS WORKING!!')
             const organizer = user.organizers.id(organizerId)
             const article = organizer.articles.id(articleId)
             article.title = req.body.title
-            article.description = req.body.notes
+            article.notes = req.body.notes
+            article.photoUrl = req.body.photoUrl
+            article.url = req.body.url
             return user.save()
         })
         .then((updatedArticle) => {
-            res.redirect(`/user/${userId}/organizer/${organizerId}/article`)
+            res.redirect(`/user/${userId}/organizer/${organizerId}/article/${articleId}`)
             console.log(updatedArticle)
+        })
+        .catch((err) => {
+            console.log(err)
         })
 })
 // show

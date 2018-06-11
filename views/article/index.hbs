@@ -1,12 +1,12 @@
 <h1>Index</h1>
+
+{{#each organizer.articles}}
 <li>
-    {{#each organizer.articles}}
-    <li>
-        <a href="/user/{{../userId}}/organizer/{{_id}}/article/{{_id}}">{{title}}</a>
-    </li>
-    <form action="/user/{{../userId}}/organizer/{{../organizer._id}}/article/{{_id}}?_method=DELETE" method="POST">
-        <button type="submit">Delete</button>
-    </form>
-    {{/each}}
+    <a href="/user/{{../userId}}/organizer/{{../organizer._id}}/article/{{_id}}">{{title}}</a>
 </li>
+<form action="/user/{{../userId}}/organizer/{{../organizer._id}}/article/{{_id}}?_method=DELETE" method="POST">
+    <button type="submit">Delete</button>
+</form>
+{{/each}}
+
 <a href="/user/{{userId}}/organizer/{{organizerId}}/article/new">Add One</a>

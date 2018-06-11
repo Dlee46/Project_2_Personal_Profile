@@ -1,3 +1,8 @@
-<form action="/user/{{../userId}}/organizer/{{_id}}/article/edit">
+<h1>{{article.title}}</h1>
+
+<img src="{{article.photoUrl}}" alt="{{article.title}} Image" for="photoUrl">
+<p>{{article.notes}}</p>
+<a href="#" for="url">{{article.title}} Link</a>
+<form action="/user/{{userId}}/organizer/{{organizerId}}/article/{{articleId}}/edit">
     <button type="submit">Edit Information</button>
 </form>
