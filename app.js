@@ -28,8 +28,8 @@ app.use('/user', userController)
 const organizerController = require('./controllers/organizerController')
 app.use('/user/:userId/organizer', organizerController)
 
-// const articleController = require('./controllers/articleController')
-// app.use('/user/:userId/organizer/:organizerId/article', articleController)
+const articleController = require('./controllers/articleController')
+app.use('/user/:userId/organizer/:organizerId/article', articleController)
 
 app.get('/', (req, res) => {
   res.redirect('/user')

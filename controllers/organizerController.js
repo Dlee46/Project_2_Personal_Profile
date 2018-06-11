@@ -84,7 +84,12 @@ router.get('/:organizerId', (req, res) => {
     User.findOne({ userId })
         .then((user) => {
             const organizer = user.organizers.id(organizerId)
-            res.render('organizer/show')
+            res.render('organizer/show', {
+                organizerId,
+                userId,
+                organizer
+            })
+
         })
         .catch((err) => {
             console.log(err)
