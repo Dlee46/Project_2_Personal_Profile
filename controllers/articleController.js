@@ -48,7 +48,7 @@ router.post('/', (req, res) => {
         })
 })
 // edit
-router.get('/:organizerId/edit', (req, res) => {
+router.get('/:article/edit', (req, res) => {
     const userId = req.params.userId
     const organizerId = req.params.organizerId
     const articleId = req.params.articleId
