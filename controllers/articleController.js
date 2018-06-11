@@ -34,10 +34,11 @@ router.post('/', (req, res) => {
     const userId = req.params.userId
     const organizerId = req.params.organizerId
     const newArticle = req.body
+    console.log('poop')
     User.findOne({ userId })
         .then((user) => {
-            user.organizers.articles.push(newArticle)
-            console.log(user.organizers.articles)
+            const organizer = user.organizers.id(organizerId)
+            organizer.articles.push(newArticle)
             return user.save()
         })
         .then(() => {
@@ -111,13 +112,16 @@ router.get('/:articleId', (req, res) => {
 })
 // delete
 router.delete('/:articleId', (req, res) => {
-    const articleId = req.params.articleId
     const userId = req.params.userId
     const organizerId = req.params.organizerId
+    const articleId = req.params.articleId
+    console.log("organizer id is: " + organizerId)
     User.findOne({ userId })
         .then((user) => {
-            const organizer = user.organizers.id(organizerId)
-            const article = organizer.articles.id(articleId).remove()
+            console.log("1 " + user)
+            console.log("2 " + user.organizers.id(organizerId))
+            console.log("3 " + user.organizers.id(organizerId).articles.id(articleId))
+            user.organizers.id(organizerId).articles.id(articleId).remove()
             return user.save()
         })
         .then(() => {

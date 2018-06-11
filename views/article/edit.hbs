@@ -1,0 +1,17 @@
+<h1>Update Information</h1>
+<ul>
+    <form action="/user/{{userId}}/organizer/{{organizerId}}/article/{{articleId}}?_method=PUT" method="POST">
+        {{!--
+        <img src="" alt="Name" for="photoUrl"> --}}
+        <label class="editinfo" for="title">Title</label>
+        <input name="title" value="{{article.title}}">
+        <br>
+        <label class="editinfo" for="notes">Notes</label>
+        <textarea name="notes" value="{{article.notes}}"></textarea>
+        <br> {{!--
+        <a href="http://#">Link</a>
+        <br> --}}
+
+        <button type="submit">Update</button>
+    </form>
+</ul>
