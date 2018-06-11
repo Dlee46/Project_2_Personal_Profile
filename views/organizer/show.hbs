@@ -1,7 +1,22 @@
+<div class="row">
+    <div class="col s12">
+        <ul class="tabs">
+            <li class="tab col s3">
+                <a href="/">Home</a>
+            </li>
+            <li class="tab col s3">
+                <a href="/user/{{userId}}/organizer/{{organizerId}}/article">Article</a>
+            </li>
+            <li class="tab col s3">
+                <a href="#test4">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</div>
 <ul>
     <li>
         <h1>{{organizer.title}}</h1>
-        <h3>Created On {{organizer.dateCreated}}</h3>
+        <h4>Created On {{organizer.dateCreated}}</h4>
         <h3>Description: {{organizer.description}}</h3>
         <a href="/user/{{userId}}/organizer/{{organizerId}}/article">{{organizer.title}} Page</a>
     </li>
