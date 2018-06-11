@@ -108,7 +108,7 @@ router.get('/:articleId', (req, res) => {
         })
 })
 // delete
-router.delete('/:organizerId', (req, res) => {
+router.delete('/:articleId', (req, res) => {
     const articleId = req.params.articleId
     const userId = req.params.userId
     const organizerId = req.params.organizerId
@@ -119,7 +119,7 @@ router.delete('/:organizerId', (req, res) => {
             return user.save()
         })
         .then(() => {
-            res.redirect(`/user/${userId}/organizer`)
+            res.redirect(`/user/${userId}/organizer/${organizerId}/article`)
         })
         .catch((err) => {
             console.log(err)
