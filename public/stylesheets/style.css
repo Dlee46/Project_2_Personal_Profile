@@ -1,8 +1,13 @@
 body {
+  background-color: #F2FCFC;
   font-family: 'Shadows Into Light', cursive;
   padding: 50px;
+  color:#0245A3;
 }
 
 a {
-  color: #00B7FF;
+  color: #0245A3;
+}
+button{
+  font-family: 'Shadows Into Light', cursive;
 }

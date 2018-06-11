@@ -1,16 +1,36 @@
-<h1>Categories</h1>
-<ul>
+<div class="row">
+    <div class="col s12">
+        <ul class="tabs">
+            <li class="tab col s3">
+                <a href="/">Home</a>
+            </li>
+            <li class="tab col s3">
+                <a href="/user/{{userId}}/organizer/{{organizerId}}/article">Article</a>
+            </li>
+            <li class="tab col s3">
+                <a href="#test4">Log Out</a>
+            </li>
+        </ul>
 
-    {{#each user.organizers}}
-    <li>
-        <a href="/user/{{../userId}}/organizer/{{_id}}">{{title}}</a>
-    </li>
-    <form action="/user/{{../userId}}/organizer/{{_id}}/edit">
-        <button type="submit">Edit Category</button>
-    </form>
-    <form action="/user/{{../userId}}/organizer/{{_id}}?_method=DELETE" method="POST">
-        <button type="submit">Delete</button>
-    </form>
-    {{/each}}
-    <a href="/user/{{userId}}/organizer/new">Create a Category</a>
-</ul>
+
+        <h1>Categories</h1>
+        <ul>
+
+            {{#each user.organizers}}
+
+            <input type="checkbox" class="filled-in" checked="unchecked" />
+            <a href="/user/{{../userId}}/organizer/{{_id}}">{{title}}</a>
+            <br>
+            <form action="/user/{{../userId}}/organizer/{{_id}}/edit">
+                <button type="submit" class="waves-effect blue accent-1 btn">
+                    <i class="material-icons left">edit</i>Edit Category</button>
+            </form>
+            <br>
+            <form action="/user/{{../userId}}/organizer/{{_id}}?_method=DELETE" method="POST">
+                <button type="submit" class="waves-effect blue accent-1 btn">
+                    <i class="material-icons left">delete</i>Delete</button>
+            </form>
+            <br> {{/each}}
+        </ul>
+        <a href="/user/{{userId}}/organizer/new" class="waves-effect blue accent-1 btn">
+            <i class="material-icons left">add</i>Create a Category</a>
