@@ -20,5 +20,109 @@ router.get('/', (req, res) => {
             console.log(err)
         })
 })
+// new
+router.get('/new', (req, res) => {
+    const userId = req.params.userId
+    const organizerId = req.params.organizerId
+    res.render('article/new', {
+        userId,
+        organizerId
+    })
+})
+// create 
+router.post('/', (req, res) => {
+    const userId = req.params.userId
+    const organizerId = req.params.organizerId
+    const newArticle = req.body
+    User.findOne({ userId })
+        .then((user) => {
+            user.organizers.articles.push(newArticle)
+            console.log(user.organizers.articles)
+            return user.save()
+        })
+        .then(() => {
+            res.redirect(`/user/${userId}/organizer/${organizerId}/article`)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+// edit
+router.get('/:organizerId/edit', (req, res) => {
+    const userId = req.params.userId
+    const organizerId = req.params.organizerId
+    const articleId = req.params.articleId
+    User.findOne({ userId })
+        .then((user) => {
+            const organizer = user.organizers.id(organizerId)
+            const article = organizer.articles.id(articleId)
+            res.render('article/edit', {
+                user,
+                userId,
+                organizer,
+                organizerId,
+                article,
+                articleId
+            })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+//update
+router.put('/:organizerId', (req, res) => {
+    const userId = req.params.userId
+    const organizerId = req.params.organizerId
+    User.findOne({ userId })
+        .then((user) => {
+            const organizer = user.organizers.id(organizerId)
+            organizer.title = req.body.title
+            organizer.description = req.body.description
+            return user.save()
+        })
+        .then((updatedOrganizer) => {
+            res.redirect(`/user/${userId}/organizer`)
+            console.log(updatedOrganizer)
+        })
+})
+// show
+router.get('/:articleId', (req, res) => {
+    const userId = req.params.userId
+    const organizerId = req.params.organizerId
+    const articleId = req.params.articleId
+    User.findOne({ userId })
+        .then((user) => {
+            const organizer = user.organizers.id(organizerId)
+            const article = organizer.articles.id(articleId)
+            res.render('article/show', {
+                organizerId,
+                userId,
+                organizer,
+                article,
+                articleId
+            })
 
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+// delete
+router.delete('/:organizerId', (req, res) => {
+    const articleId = req.params.articleId
+    const userId = req.params.userId
+    const organizerId = req.params.organizerId
+    User.findOne({ userId })
+        .then((user) => {
+            const organizer = user.organizers.id(organizerId)
+            const article = organizer.articles.id(articleId).remove()
+            return user.save()
+        })
+        .then(() => {
+            res.redirect(`/user/${userId}/organizer`)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
 module.exports = router
