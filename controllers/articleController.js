@@ -70,19 +70,21 @@ router.get('/:article/edit', (req, res) => {
         })
 })
 //update
-router.put('/:organizerId', (req, res) => {
+router.put('/:articleId', (req, res) => {
     const userId = req.params.userId
     const organizerId = req.params.organizerId
+    const articleId = req.params.organizedId
     User.findOne({ userId })
         .then((user) => {
             const organizer = user.organizers.id(organizerId)
-            organizer.title = req.body.title
-            organizer.description = req.body.description
+            const article = organizer.articles.id(articleId)
+            article.title = req.body.title
+            article.description = req.body.notes
             return user.save()
         })
-        .then((updatedOrganizer) => {
-            res.redirect(`/user/${userId}/organizer`)
-            console.log(updatedOrganizer)
+        .then((updatedArticle) => {
+            res.redirect(`/user/${userId}/organizer/${organizerId}/article`)
+            console.log(updatedArticle)
         })
 })
 // show
