@@ -18,6 +18,8 @@
 <img src="{{article.photoUrl}}" alt="{{article.title}} Image" for="photoUrl">
 <p>Notes: {{article.notes}}</p>
 <a href="{{article.url}}" for="url">{{article.title}} Link</a>
+<br>
 <form action="/user/{{userId}}/organizer/{{organizerId}}/article/{{articleId}}/edit">
-    <button type="submit">Edit Information</button>
+    <button type="submit" class="waves-effect blue accent-1 btn ">
+        <i class="material-icons left ">file_upload</i>Edit Information</button>
 </form>

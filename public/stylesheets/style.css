@@ -19,6 +19,10 @@ a {
   color: #8fbaf3;
   font-size: 200%;
 }
+#userBtn{
+  color: black;
+  margin: auto;
+}
 button{
   font-family: 'Concert One', cursive;
 }
