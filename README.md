@@ -25,4 +25,4 @@ Project 2, Personal Profile, was created with the idea that it should be able to
 [Figma](https://www.figma.com/file/LVG96EQRLpEwG3anghfDKlcu/Project-2-Personal-Organizer?node-id=3%3A1)
 
 
-[Personal Profile Project Link] (https://project2-profile.herokuapp.com/user)
+[Personal Profile Project Link](https://project2-profile.herokuapp.com/user)
