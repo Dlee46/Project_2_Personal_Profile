@@ -17,9 +17,11 @@ Project 2, Personal Profile, was created with the idea that it should be able to
  In the near future, I would like to add more design to this app along with more neat javascript functions like an authentication function for a password.
 
 ##**User Stories**
+
 [Trello](https://trello.com/b/koY6utGZ/personal-organizer)
 
 ##**Wireframes & ERD**
+
 [Figma](https://www.figma.com/file/LVG96EQRLpEwG3anghfDKlcu/Project-2-Personal-Organizer?node-id=3%3A1)
 
 
