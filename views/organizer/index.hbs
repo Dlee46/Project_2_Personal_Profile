@@ -18,21 +18,22 @@
 <div class="row">
 
     {{#each user.organizers}}
-
-    <div class="col s4">
-        <form action=" /user/{{../userId}}/organizer/{{_id}}/edit ">
-            <button type="submit " class="waves-effect blue accent-1 btn ">
-                <i class="material-icons left ">edit</i>Edit Category</button>
-        </form>
-    </div>
-    <div class="col s4">
-        <a href="/user/{{../userId}}/organizer/{{_id}} ">{{title}}</a>
-    </div>
-    <div class=" col s4 ">
-        <form action="/user/{{../userId}}/organizer/{{_id}}?_method=DELETE " method="POST ">
-            <button type="submit " class="waves-effect blue accent-1 btn ">
-                <i class="material-icons left ">delete</i>Delete</button>
-        </form>
+    <div class="col s12">
+        <div class="col s4">
+            <form action=" /user/{{../userId}}/organizer/{{_id}}/edit ">
+                <button type="submit " class="waves-effect blue accent-1 btn ">
+                    <i class="material-icons left ">edit</i>Edit Category</button>
+            </form>
+        </div>
+        <div class="col s4">
+            <a href="/user/{{../userId}}/organizer/{{_id}} ">{{title}}</a>
+        </div>
+        <div class=" col s4 ">
+            <form action="/user/{{../userId}}/organizer/{{_id}}?_method=DELETE " method="POST ">
+                <button type="submit " class="waves-effect blue accent-1 btn ">
+                    <i class="material-icons left ">delete</i>Delete</button>
+            </form>
+        </div>
     </div>
     {{/each}}
 </div>

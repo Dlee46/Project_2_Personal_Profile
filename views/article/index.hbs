@@ -16,16 +16,17 @@
 <h1>Index</h1>
 <div class="row">
     {{#each organizer.articles}}
-
-    <div class="col s6">
-        <a href="/user/{{../userId}}/organizer/{{../organizer._id}}/article/{{_id}}">{{title}}</a>
+    <div class="col s12">
+        <div class="col s6">
+            <a href="/user/{{../userId}}/organizer/{{../organizer._id}}/article/{{_id}}">{{title}}</a>
+        </div>
+        <div class="col s6">
+            <form action="/user/{{../userId}}/organizer/{{../organizer._id}}/article/{{_id}}?_method=DELETE" method="POST">
+                <button type="submit" class="blue accent-2 btn">
+                    <i class="material-icons left">delete</i>Delete Page</button>
+            </form>
+        </div>
     </div>
-    <div class="col s6"></div>
-    <form action="/user/{{../userId}}/organizer/{{../organizer._id}}/article/{{_id}}?_method=DELETE" method="POST">
-        <button type="submit" class="blue accent-2 btn">
-            <i class="material-icons left">delete</i>Delete Page</button>
-    </form>
-</div>
-{{/each}}
+    {{/each}}
 </div>
 <a href="/user/{{userId}}/organizer/{{organizerId}}/article/new">Add One</a>
