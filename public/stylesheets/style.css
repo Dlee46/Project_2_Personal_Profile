@@ -9,6 +9,7 @@ img{
   border: 1px solid black;
   max-width: 600px;
   max-height: 400px;
+  margin: auto;
 }
 p {
   width: 600px;
