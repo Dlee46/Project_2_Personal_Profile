@@ -17,15 +17,18 @@
 <ul>
     <form action="/user/{{userId}}/organizer/{{organizerId}}/article" method="POST">
 
-        <img src="" alt="Name" for="photoUrl">
         <label class="editinfo" for="title">Title</label>
         <input name="title">
         <br>
         <label class="editinfo" for="notes">Notes</label>
-        <textarea name="description"></textarea>
+        <textarea name="notes"></textarea>
         <br>
-        <a href="http://#">Link</a>
+        <label for="url">Website Url</label>
+        <input type="url" name="url">
         <br>
+        <label for="photoUrl">Photo Url</label>
+        <input type="url" name="photoUrl">
+
 
         <button type="submit">Create</button>
     </form>
