@@ -12,16 +12,17 @@ router.get('/', (req, res) => {
             console.log(err)
         })
 })
-// router.post('/userId', (req, res) => {
-//     const madeUser = req.body
-//     User.findById(madeUser)
-//         .then((user) => {
-//             res.redirect(`/user/${user.userId}/organizer`)
-//         })
-//         .catch((err) => {
-//             console.log(err)
-//         })
-// })
+router.post('/userId', (req, res) => {
+    const userId = req.body.userId
+    console.log(userId)
+    User.findOne({ userId })
+        .then((user) => {
+            res.redirect(`/user/${user.userId}/organizer`)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
 // Create (idea came from wdi project 2 example)
 router.post('/new', (req, res) => {
     console.log("Working")

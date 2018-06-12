@@ -1,14 +1,29 @@
 <form action="/user" method="POST">
-    <input type="text" name="userId" placeholder="User ID">
+    <div class="input-field col s8">
+        <input type="text" id="userId" name="userId" class="validate">
+        <label for="userId">User Id</label>
+        <span class="helper-text" data-error="wrong" data-success="right">Input User ID</span>
+    </div>
     <input type="submit" value="Login">
 </form>
 
+<br>
+
 <form action="/user/new" method="POST">
-    <input type="text" name="name" placeholder="Name" required>
-    <input type="text" name="userId" placeholder="user ID" required>
+    <div class="input-field col s8">
+        <input type="text" id="name" name="name" class="validate">
+        <label for="name">Name</label>
+        <span class="helper-text" data-error="wrong" data-success="right">Input First and Last Name</span>
+    </div>
+    <div class="input-field col s8">
+        <input type="text" id="userId" name="userId" class="validate">
+        <label for="userId">User Id</label>
+        <span class="helper-text" data-error="wrong" data-success="right">Input Desired User Id</span>
+    </div>
     <input type="submit" value="Create">
 </form>
 
+<br>
 <div>
     <a href="/" type="submit">Home</a>
 </div>
