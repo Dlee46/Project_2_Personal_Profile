@@ -105,7 +105,7 @@ router.delete('/:organizerId', (req, res) => {
         .then((user) => {
             console.log(user)
             console.log(user.organizer)
-            const organizer = user.organizers.id(organizerId).remove()
+            user.organizers.id(organizerId).remove()
             return user.save()
         })
         .then(() => {
